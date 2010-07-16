@@ -191,6 +191,7 @@ class Ranges(private val parts: List[Ranges.Pair]) {
   def foreach(f: Ranges.Pair => Unit) = parts foreach f
   def length = parts.length
   def isEmpty = parts.isEmpty
+  override def hashCode = parts.hashCode
   override def equals(other: Any) = parts == other.asInstanceOf[Ranges].parts
   override def toString = parts.toString
 }
