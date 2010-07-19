@@ -43,7 +43,7 @@ trait ReActor extends Actor {
     this ! Stop
   }
   def reAct: PF
-  final def to(p: PF) = react(safePartial(p))
+  def to(p: PF) = react(safePartial(p))
   
   def doStop: Unit = {}
   def handleException(e: Exception) = {}
