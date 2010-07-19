@@ -6,6 +6,7 @@ object Ranges {
     def withMaxLength(len: Long) = Pair(start, end.min(start + len))
   }
   
+  val empty = Ranges()
   def apply(parts: Pair*) = new Ranges(parts.toList)
   def apply(point: Long) = new Ranges(point)
   def apply(start: Long, stop: Long) = new Ranges(start, stop)
