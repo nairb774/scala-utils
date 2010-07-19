@@ -142,7 +142,7 @@ object Ranges {
   }
 }
 
-class Ranges(private val parts: List[Ranges.Pair]) {
+class Ranges(val parts: List[Ranges.Pair]) {
   import scala.collection.mutable.ListBuffer
   def this(point: Long) = this(List(Ranges.Pair(point, point + 1)))
   def this(start: Long, end: Long) = this(List(Ranges.Pair(start, end)))
