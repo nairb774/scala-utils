@@ -21,8 +21,11 @@ trait ReActor extends Actor {
   
   private val handleStop: PF = {
     case Stop =>
-      doStop
-      exit
+      try {
+          doStop
+      } finally {
+          exit
+      }
   }
   private def safePartial(act: PF) = new PF {
     private val f = act orElse handleStop
