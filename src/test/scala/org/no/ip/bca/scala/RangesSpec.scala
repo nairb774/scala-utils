@@ -40,7 +40,7 @@ class RangesTest extends SpecificationWithJUnit {
     "smaller" >> { ranges & (3, 4) mustEqual Ranges(3, 4) }
     "left overlap" >> { ranges & (1, 3) mustEqual Ranges(2, 3) }
     "right overlap" >> { ranges & (4, 6) mustEqual Ranges(4, 5) }
-    "disjoint" >> { ranges & (8, 10) mustEqual Ranges() }
+    "disjoint" >> { ranges & (8, 10) mustEqual Ranges.empty }
     "straddle" >> { ranges & Ranges((1, 3), (4, 7)) mustEqual Ranges((2, 3), (4, 5)) }
     "straddle2" >> { Ranges((1, 3), (4, 7)) & ranges mustEqual Ranges((2, 3), (4, 5)) }
     "zig-zag" >> { Ranges((0, 2), (5, 8), (11, 14)) & Ranges((1, 6), (7, 12)) mustEqual Ranges((1, 2), (5, 6), (7, 8), (11, 12)) }
