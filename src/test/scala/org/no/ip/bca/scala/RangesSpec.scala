@@ -44,6 +44,8 @@ class RangesTest extends SpecificationWithJUnit {
     "straddle" >> { ranges & Ranges((1, 3), (4, 7)) mustEqual Ranges((2, 3), (4, 5)) }
     "straddle2" >> { Ranges((1, 3), (4, 7)) & ranges mustEqual Ranges((2, 3), (4, 5)) }
     "zig-zag" >> { Ranges((0, 2), (5, 8), (11, 14)) & Ranges((1, 6), (7, 12)) mustEqual Ranges((1, 2), (5, 6), (7, 8), (11, 12)) }
+    "adjacent" >> { Ranges((0, 3), (6, 10)) & Ranges(3, 6) mustEqual Ranges.empty }
+    "adjacent2" >> { Ranges(3, 6) & Ranges((0, 3), (6, 10)) mustEqual Ranges.empty }
   }
 
   "complement" should {

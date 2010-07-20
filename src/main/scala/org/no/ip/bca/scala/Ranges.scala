@@ -75,7 +75,7 @@ object Ranges {
       var startPt = start
       do {
         startPt = start
-        while (!left.isEmpty && leftEnd <= start) {
+        while (!left.isEmpty && leftEnd < start) {
           start = start max leftStart
           
           left = left.tail
@@ -85,7 +85,7 @@ object Ranges {
             leftEnd = leftHead.end
           }
         }
-        while (!right.isEmpty && rightEnd <= start) {
+        while (!right.isEmpty && rightEnd < start) {
           start = start max rightStart
           
           right = right.tail
