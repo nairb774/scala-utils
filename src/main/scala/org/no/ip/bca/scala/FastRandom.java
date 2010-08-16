@@ -1,4 +1,4 @@
-package org.no.ip.bca.superlearn;
+package org.no.ip.bca.scala;
 
 import java.security.SecureRandom;
 

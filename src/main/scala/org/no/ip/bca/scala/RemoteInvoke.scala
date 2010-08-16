@@ -1,10 +1,9 @@
-package org.no.ip.bca.superlearn
+package org.no.ip.bca.scala
 
 import java.io.{ ByteArrayInputStream, ByteArrayOutputStream, DataInput, DataOutputStream, ObjectInputStream, ObjectOutputStream }
 import java.lang.reflect.{ InvocationHandler, Method, Proxy }
 import java.util.IdentityHashMap
 
-import org.no.ip.bca.scala.LoggingSupport
 import org.no.ip.bca.scala.utils.actor.ReActor
 
 private object InvokeTypes {
@@ -33,18 +32,16 @@ object ActiveProxy {
 
 private class ActiveProxy[T <: AnyRef](obj: T) extends InvocationHandler with ReActor {
   private case class I(method: Method, args: Array[AnyRef])
-  def invoke(proxy: AnyRef, method: Method, args: Array[AnyRef]): AnyRef = {
-    method.getName match {
-      case "equals" if args != null && args.length == 1 =>
-        (this eq args(0)).asInstanceOf[AnyRef]
-      case "hashCode" if args == null =>
-        (this.hashCode).asInstanceOf[AnyRef]
-      case "toString" if args == null =>
-        this.toString
-      case _ =>
-        this ! I(method, args)
-        null
-    }
+  def invoke(proxy: AnyRef, method: Method, args: Array[AnyRef]): AnyRef = method.getName match {
+    case "equals" if args != null && args.length == 1 =>
+      (this eq args(0)).asInstanceOf[AnyRef]
+    case "hashCode" if args == null =>
+      (this.hashCode).asInstanceOf[AnyRef]
+    case "toString" if args == null =>
+      this.toString
+    case _ =>
+      this ! I(method, args)
+      null
   }
 
   val reAct: PartialFunction[Any, Unit] = {

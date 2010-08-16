@@ -1,4 +1,4 @@
-package org.no.ip.bca.superlearn
+package org.no.ip.bca.scala
 
 import java.io._
 import java.util.concurrent._
@@ -7,8 +7,8 @@ import scala.actors.Actor._
 import org.specs._
 
 
-object InvokeHandlerSpec extends InvokeHandlerTest
-class InvokeHandlerTest extends SpecificationWithJUnit {"a" should {
+object RemoteInvokeSpec extends RemoteInvokeTest
+class RemoteInvokeTest extends SpecificationWithJUnit {"a" should {
   "b" >> {
     val block = new CountDownLatch(1)
     val cis = new PipedInputStream
